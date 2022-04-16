@@ -9,25 +9,24 @@ export default function Login() {
     <Center h="100vh">
       <Stack
         align="center"
-        bgColor="purple.300"
         w="fit-content"
         p={5}
         borderRadius="3xl"
-        spacing={5}
-        boxShadow="md">
+        spacing={5}>
 
         <Box
           bgColor="white"
           w="fit-content"
           p={2}
+          borderWidth="1px"
           borderRadius="full">
           <Image src="https://www.palladinobmw.com/wp-content/uploads/2019/07/google-minimal-logo.png" boxSize="50px"/>
         </Box>
 
         <Button
-          bgColor="white"
-          rounded="xl"
-          boxShadow="md"
+          colorScheme="purple"
+          rounded="md"
+          boxShadow="xl"
           onClick={() => signInWithGoogle("", {prompt: "select_account"})}>
           Entrar com o Google
         </Button>

@@ -1,34 +1,43 @@
 import { Center, ChakraProvider, Spinner } from "@chakra-ui/react";
-import Login from "../components/Login";
-import Logout from "../components/Logout";
+import Header from "../components/Header";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebaseconfig";
+import LoginPage from "../pages/LoginPage"
+import HomePage from "../pages/HomePage"
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   const [user, loading, error] = useAuthState(auth);
 
   if (loading) {
     return (
-      <ChakraProvider>
-        <Center h="100vh">
-          <Spinner size="xl" />
-        </Center>
-      </ChakraProvider>
+      <>
+        <Header />
+        <ChakraProvider>
+          <Center h="100vh">
+            <Spinner size="xl" />
+          </Center>
+        </ChakraProvider>
+      </>
     );
   }
 
   if (!user) {
     return (
-      <ChakraProvider>
-        <Login/>
-      </ChakraProvider>
+      <>
+        <ChakraProvider>
+          <LoginPage />
+        </ChakraProvider>
+      </>
     );
   }
 
   return (
-    <ChakraProvider>
-      <Logout />
-    </ChakraProvider>
+    <>
+      <ChakraProvider>
+        <HomePage />
+      </ChakraProvider>
+    </>
   ) 
 }
 
