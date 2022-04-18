@@ -16,7 +16,6 @@ import {
   useDisclosure,
   Input,
   useToast,
-  InputLeftElement,
   InputGroup,
   InputRightElement
 } from "@chakra-ui/react";
@@ -29,9 +28,7 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, addDoc } from "firebase/firestore";
 
 import Header from "../components/Header";
-import SearchBar from "../components/SearchBar";
 import TopicCard from "../components/TopicCard";
-import { async } from "@firebase/util";
 
 export default function LoginPage() {
   const [newTopic, setNewTopic] = React.useState("")

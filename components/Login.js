@@ -20,7 +20,7 @@ export default function Login() {
           p={2}
           borderWidth="1px"
           borderRadius="full">
-          <Image src="https://www.palladinobmw.com/wp-content/uploads/2019/07/google-minimal-logo.png" boxSize="50px"/>
+          <Image src="https://www.palladinobmw.com/wp-content/uploads/2019/07/google-minimal-logo.png" boxSize="50px" alt="logo do google"/>
         </Box>
 
         <Button
