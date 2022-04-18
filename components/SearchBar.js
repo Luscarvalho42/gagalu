@@ -2,18 +2,20 @@ import {
   InputGroup,
   InputRightElement,
   Input,
-  IconButton
+  IconButton,
+  ButtonGroup,
+  Button
 } from "@chakra-ui/react";
 
-import { SearchIcon } from "@chakra-ui/icons";
+import { SearchIcon, AddIcon } from "@chakra-ui/icons";
 
 export default function SearchBar() {
 
   return (
-    <InputGroup size='md' w="200px">
+    <InputGroup size='md' w="300px">
       <Input
         type='text'
-        placeholder='Pesquisar tema'
+        placeholder='Pesquisar assunto'
       />
       <InputRightElement>
         <IconButton bgColor="purple.50" borderWidth="1px" icon={<SearchIcon />} />
