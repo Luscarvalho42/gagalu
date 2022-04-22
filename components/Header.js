@@ -7,7 +7,7 @@ export default function Header({ inLoginPage }) {
 
 function comomPage() {
   return (
-    <Flex w="100%" pos="fixed" top bgColor="purple.50" p={3} px="20vw" color="purple.500">
+    <Flex w="100%" pos="fixed" top bgColor="purple.50" p={3} px="20vw" color="purple.500" zIndex="9999">
       <Center w="100%">
         <Heading>GAGALU</Heading>
         <Spacer />

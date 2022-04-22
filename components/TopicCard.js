@@ -1,7 +1,8 @@
 import { Button } from "@chakra-ui/react";
-export default function TopicCard({ children }) {
+export default function TopicCard({ children, actionBtn }) {
   return (
     <Button
+      onClick={actionBtn}
       bgColor="purple.50"
       boxShadow="sm"
       w="250px"

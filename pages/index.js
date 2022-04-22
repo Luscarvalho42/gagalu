@@ -22,6 +22,7 @@ import {
 import { AddIcon, SearchIcon } from "@chakra-ui/icons";
 
 import React from "react";
+import { useRouter } from "next/router";
 import { auth, db } from "../firebaseconfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -31,6 +32,7 @@ import Header from "../components/Header";
 import TopicCard from "../components/TopicCard";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [newTopic, setNewTopic] = React.useState("")
   const [filter, setFilter] = React.useState("")
   
@@ -40,9 +42,12 @@ export default function LoginPage() {
   
   const changeNewTopic = (event) => setNewTopic(event.target.value);
   const { isOpen, onOpen, onClose } = useDisclosure()
-  
+
+  const redirect = (id) => {
+    router.push(`topic/${id}`)
+  }
+
   const addTopic = async () => {
-    console.log(newTopic.length)
     if (topics?.filter(({name}) => name === newTopic).length > 0) {
       toast({
         title: 'Este assunto já existe',
@@ -72,6 +77,15 @@ export default function LoginPage() {
     }
   }).filter(({name}) => name.toUpperCase().includes(filter.toUpperCase()));
 
+  const topicList = () => {
+    return (
+      topics?.map(({ id, name }) =>
+        <TopicCard key={id} actionBtn={() => redirect(id)}>
+          {name}
+        </TopicCard>
+      )
+    )
+  }
 
   return (
     <>
@@ -111,11 +125,8 @@ export default function LoginPage() {
             maxW={"780"}
             m={"auto"}
             p={2}
-            sx={{ columnCount: [1, 2, 3], columnGap:"10px"}}
-          >
-            {topics?.map(function ({ name }) {
-              return <TopicCard key={Math.random}>{name}</TopicCard>
-            })}
+            sx={{ columnCount: [1, 2, 3], columnGap:"10px"}}>
+            {topicList()}
           </Box>
         </Center>
       </Stack>
